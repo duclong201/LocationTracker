@@ -22,14 +22,13 @@ class ViewController: UIViewController {
     var currentLocation: CLLocation?
     var locationManager: CLLocationManager?
     var isLocationAccessAllowed = false
-    
-    let notificationCenter = NotificationCenter.default
+
     var movingSession = MovingSession()
     var lineOverlay: MKPolyline?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationUnit.shared.requestPermission()
+        NotificationUnit.shared.requestNotificationPermission()
         setUpLocationManager()
         setInitialLocationToMapView()
         startUpdatingLocation()
@@ -88,6 +87,7 @@ class ViewController: UIViewController {
         }
     }
     
+    /// Add a polyline through user previous locations
     private func updateLineOverlayOnMapView() {
         if let lineOverlay = lineOverlay {
             mapView.removeOverlay(lineOverlay)
@@ -108,8 +108,8 @@ class ViewController: UIViewController {
             movingSession.start()
             os_log("Start a new moving session")
         case .running:
-            movingSession.finish(location: currentLocation)
             self.currentLocation = locationManager?.location
+            movingSession.finish(location: currentLocation)
             os_log("Finish current moving session")
             break
         }

@@ -28,12 +28,15 @@ class MovingSession {
         self.startLocation = startLocation
     }
     
+    /// Reset location history and start recording a new moving session
     func start() {
         startTime = Date().timeIntervalSince1970
+        locationHistory = []
         locationHistory.append(LocationAndTime(location: startLocation, timestamp: startTime, distanceFromLastLocation: 0))
         state = .running
     }
     
+    /// Add a new location entry to location history
     func saveLocationToHistory(location: CLLocation) {
         guard let lastLocation = locationHistory.last else { return }
         let distanceFromLastLocation = lastLocation.location.distance(from: startLocation)
@@ -45,12 +48,14 @@ class MovingSession {
         updateAverageSpeed()
     }
     
+    /// Update average speed
     func updateAverageSpeed() {
         guard !locationHistory.isEmpty else { return }
         let distanceAndTimeTravelled = locationHistory.map {$0.distanceAndTime}
         averageSpeed = DistanceAndTime.calculateAverageSpeed(distanceAndTime: distanceAndTimeTravelled)
     }
     
+    /// Finish the moving session
     func finish(location: CLLocation) {
         saveLocationToHistory(location: location)
         state = .idle
@@ -70,6 +75,7 @@ struct DistanceAndTime: Equatable {
     let distance: Double
     let time: Double
     
+    /// Calculate average speed from an array of distance and timestamp recorded
     static func calculateAverageSpeed(distanceAndTime: [DistanceAndTime]) -> Double {
         let totalDistanceTravelled = distanceAndTime.map {$0.distance}.reduce(0, +)
         guard let first = distanceAndTime.first, let last = distanceAndTime.last, first.time != last.time else {

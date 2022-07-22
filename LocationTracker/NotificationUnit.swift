@@ -14,7 +14,7 @@ class NotificationUnit: NSObject {
     let notificationCenter = UNUserNotificationCenter.current()
     var isPermissionGranted = false
     
-    func requestPermission() {
+    func requestNotificationPermission() {
         notificationCenter.requestAuthorization(options: [.alert]) { granted, error in
             if granted == true && error == nil {
                 self.isPermissionGranted = true
