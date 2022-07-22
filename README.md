@@ -1,5 +1,8 @@
 # LocationTracker
 
+![alt text](https://github.com/duclong201/LocationTracker/blob/main/Screenshot1.PNG)
+![alt text](https://github.com/duclong201/LocationTracker/blob/main/Screenshot2.PNG)
+
 ## 1. Environment requirements
 - Xcode 13.4.1
 - iOS 15.0
