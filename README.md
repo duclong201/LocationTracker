@@ -24,7 +24,7 @@ I want to make an intuitive and fun application to use. As a result, I have focu
 References:
 - https://www.raywenderlich.com/9956648-mapkit-tutorial-overlay-views
 - https://www.raywenderlich.com/7738344-mapkit-tutorial-getting-started
-No 3rd party library
+- No 3rd party library
 
 ## 6. Duration
 - Research and brainstorming: 1-2 hours
