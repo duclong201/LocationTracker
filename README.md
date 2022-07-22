@@ -8,16 +8,18 @@
 - iOS 15.0
 
 ## 2. Implementation decision and trade-offs
-Decision: Using Apple MapKit instead of 3rd party libraries.
-Reason:
+### Decision: 
+- Using Apple MapKit instead of 3rd party libraries.
+### Reason:
 - I am not familiar with using location service in iOS
 - Apple provides a very thorought documentation of the MapKit which I can rely on for research and save time for the project
-Trade-offs:
+### Trade-offs:
 - Less accurate and effective
 
 ## 3. Architectural considerations and reasonings
-MVC pattern
-Reason:
+### Decision
+- Using MVC pattern
+### Reason:
 - The project is simple and using MVVM would be overkill with new classes and bindings, which is not necessary
 
 ## 4. Areas of focus
